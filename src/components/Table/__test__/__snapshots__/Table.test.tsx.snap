@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Table /> Table component matches snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "paddingBottom": 10,
+      "paddingLeft": 10,
+      "paddingRight": 10,
+      "paddingTop": 10,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "borderBottomColor": "#ccc",
+        "borderBottomWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "paddingBottom": 10,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "textAlign": "center",
+        }
+      }
+    >
+      Name
+    </Text>
+    <Text
+      style={
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "textAlign": "center",
+        }
+      }
+    >
+      Rank
+    </Text>
+    <Text
+      style={
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "textAlign": "center",
+        }
+      }
+    >
+      Number of Bananas
+    </Text>
+    <Text
+      style={
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "textAlign": "center",
+        }
+      }
+    >
+      Is Searched User
+    </Text>
+  </View>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "bananas": 5,
+          "lastDayPlayed": "2018-10-22",
+          "longestStreak": 2,
+          "name": "John",
+          "rank": 1,
+          "stars": 16,
+          "subscribed": true,
+          "uid": "1",
+        },
+        Object {
+          "bananas": 10,
+          "lastDayPlayed": "2019-10-22",
+          "longestStreak": 2,
+          "name": "Alice",
+          "rank": 2,
+          "stars": 16,
+          "subscribed": false,
+          "uid": "2",
+        },
+      ]
+    }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    viewabilityConfigCallbackPairs={Array []}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "borderBottomColor": "#ccc",
+              "borderBottomWidth": 1,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingBottom": 10,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 10,
+              "width": "100%",
+            }
+          }
+          testID="table-row"
+        >
+          <Text
+            isHighlighted={false}
+            style={
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "textAlign": "center",
+              }
+            }
+          >
+            John
+          </Text>
+          <Text
+            style={
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "textAlign": "center",
+              }
+            }
+          >
+            1
+          </Text>
+          <Text
+            style={
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "textAlign": "center",
+              }
+            }
+          >
+            5
+          </Text>
+          <Text
+            style={
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "textAlign": "center",
+              }
+            }
+          >
+            Yes
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "borderBottomColor": "#ccc",
+              "borderBottomWidth": 1,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingBottom": 10,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 10,
+              "width": "100%",
+            }
+          }
+          testID="table-row"
+        >
+          <Text
+            isHighlighted={false}
+            style={
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "textAlign": "center",
+              }
+            }
+          >
+            Alice
+          </Text>
+          <Text
+            style={
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "textAlign": "center",
+              }
+            }
+          >
+            2
+          </Text>
+          <Text
+            style={
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "textAlign": "center",
+              }
+            }
+          >
+            10
+          </Text>
+          <Text
+            style={
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "textAlign": "center",
+              }
+            }
+          >
+            No
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
