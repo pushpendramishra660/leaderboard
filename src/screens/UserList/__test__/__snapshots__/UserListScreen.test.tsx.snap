@@ -53,7 +53,7 @@ exports[`<UserListScreen /> UserListScreen matches snapshot 1`] = `
         resizeMode="contain"
         source={
           Object {
-            "testUri": "../../../app/assets/images/search.png",
+            "testUri": "../../../src/assets/images/search.png",
           }
         }
         style={
