@@ -26,6 +26,9 @@ const UserListScreen: React.FC = () => {
   const [searchedUser, setSearchedUser] = useState<string>("");
   const [userData, setUserData] = useState<User | null>(null);
   const initialData: User[] = useMemo(() => Object.values(users), []);
+
+  // Memoized values for initial data and sorted users
+
   const sortedUsers = useMemo(() => {
     return [...initialData]
       .sort((a, b) => b.bananas - a.bananas)
@@ -35,13 +38,25 @@ const UserListScreen: React.FC = () => {
       }));
   }, [initialData]);
 
+  // Render Initial Top 10 users
+
+  useEffect(() => {
+    setTopUsers(sortedUsers.slice(0, 10));
+  }, [sortedUsers]);
+
+  // Callback function to handle user search
+
   const handleSearch = useCallback(() => {
+    // Return if search is empty
     if (!searchedUser) {
       return;
     }
-
-    const foundUser = sortedUsers.find((user) => user.name.toLowerCase() === searchedUser.toLowerCase());
+    // Search for the user in the sorted users list
+    const foundUser = sortedUsers.find(
+      (user) => user.name.toLowerCase() === searchedUser.toLowerCase()
+    );
     if (!foundUser) {
+      // Show an alert if the user is not found
       Alert.alert(
         Constants.Messages.alertTitle,
         Constants.Messages.noUserFound
@@ -54,18 +69,16 @@ const UserListScreen: React.FC = () => {
       (user) => user.name.toLowerCase() === searchedUser.toLowerCase()
     );
     if (userIndex !== -1) {
+      // Update top users if the user is already in the top 10
       setTopUsers(top10Users);
     } else {
+      // Update top users if the user is not in the top 10
       const updatedTopUsers = [...top10Users];
       updatedTopUsers[updatedTopUsers.length - 1] = foundUser;
       setTopUsers(updatedTopUsers);
     }
     setUserData(userIndex !== -1 ? sortedUsers[userIndex] : foundUser);
   }, [searchedUser, sortedUsers]);
-
-  useEffect(() => {
-    setTopUsers(sortedUsers.slice(0, 10));
-  }, [sortedUsers]);
 
   const [topUsers, setTopUsers] = useState<User[]>([]);
 
