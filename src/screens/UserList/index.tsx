@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { Alert } from "react-native";
 import styled from "styled-components/native";
-import { SearchBar, Table, CustomButton } from "~/components";
+import { SearchBar, Table, CustomButton } from "../../components";
 import { User } from "~/types";
-import users from '../../assets/files/leaderboard.json';
-import Constants from '~/constants';
+import users from "../../assets/files/leaderboard.json";
+import Constants from "../../constants";
 
 const StyledContainer = styled.View`
   flex: 1;
@@ -25,42 +25,49 @@ const StyledSearchBarContainer = styled.View`
 const UserListScreen: React.FC = () => {
   const [searchedUser, setSearchedUser] = useState<string>("");
   const [userData, setUserData] = useState<User | null>(null);
-  const initialData: User[] = Object.values(users);
-  const [topUsers, setTopUsers] = useState<User[]>([]);
+  const initialData: User[] = useMemo(() => Object.values(users), []);
+  const sortedUsers = useMemo(() => {
+    return [...initialData]
+      .sort((a, b) => b.bananas - a.bananas)
+      .map((user, index) => ({
+        ...user,
+        rank: index + 1,
+      }));
+  }, [initialData]);
 
-  const handleSearch = () => {
-    if (searchedUser.length === 0) return;
-    const sortedUsers = [...initialData].sort((a, b) => b.bananas - a.bananas);
-    const foundUser = sortedUsers.find((user) => user.name === searchedUser);
+  const handleSearch = useCallback(() => {
+    if (!searchedUser) {
+      return;
+    }
 
+    const foundUser = sortedUsers.find((user) => user.name.toLowerCase() === searchedUser.toLowerCase());
     if (!foundUser) {
-      Alert.alert(Constants.Messages.alertTitle, Constants.Messages.noUserFound);
+      Alert.alert(
+        Constants.Messages.alertTitle,
+        Constants.Messages.noUserFound
+      );
       return;
     }
 
     const top10Users = sortedUsers.slice(0, 10);
-    const foundTopUser = top10Users.find((user) => user.name === searchedUser);
-
-    const filteredUsers = top10Users.map((user, index) => ({
-      ...user,
-      rank: index + 1,
-    }));
-
-    const userIndex = sortedUsers.findIndex(
-      (user) => user.name === searchedUser
+    const userIndex = top10Users.findIndex(
+      (user) => user.name.toLowerCase() === searchedUser.toLowerCase()
     );
-    if (userIndex !== -1 && !foundTopUser) {
-      filteredUsers[filteredUsers.length - 1] = {
-        ...sortedUsers[userIndex],
-        rank: userIndex + 1,
-      };
-      setUserData(sortedUsers[userIndex]);
+    if (userIndex !== -1) {
+      setTopUsers(top10Users);
     } else {
-      setUserData(foundTopUser || foundUser);
+      const updatedTopUsers = [...top10Users];
+      updatedTopUsers[updatedTopUsers.length - 1] = foundUser;
+      setTopUsers(updatedTopUsers);
     }
+    setUserData(userIndex !== -1 ? sortedUsers[userIndex] : foundUser);
+  }, [searchedUser, sortedUsers]);
 
-    setTopUsers(filteredUsers);
-  };
+  useEffect(() => {
+    setTopUsers(sortedUsers.slice(0, 10));
+  }, [sortedUsers]);
+
+  const [topUsers, setTopUsers] = useState<User[]>([]);
 
   return (
     <StyledContainer>
