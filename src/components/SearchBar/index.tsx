@@ -32,7 +32,7 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({placeholder, onChangeText}) => {
   return (
     <SearchBarContainer>
-      <SearchIcon source={Constants.images.searchIcon} resizeMode="contain" />
+      <SearchIcon source={Constants.Images.searchIcon} resizeMode="contain" />
       <SearchInput
         placeholder={placeholder}
         placeholderTextColor={theme.colors.dark}

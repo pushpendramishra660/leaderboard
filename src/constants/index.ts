@@ -1,7 +1,9 @@
-import images from './images';
+import Images from "./images";
+import Messages from "./messages";
 
 const Constants = {
-  images: images,
+  Images,
+  Messages,
 };
 
 export default Constants;

@@ -4,7 +4,7 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "lib": ["ES2017", "es6", "es7"],
+    "lib": ["ES2017", "es5", "es6", "es7"],
     "moduleResolution": "node",
     "types": ["react", "jest", "react-native"],
     "jsx": "react-native",
